@@ -1,1 +1,3 @@
-deleted contentent
+second commit (adding rebase conflicts)
+first commit
+new file but now from dev branch 
