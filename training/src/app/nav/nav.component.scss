@@ -1,0 +1,20 @@
+.navigation {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navigation_list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-wrap: nowrap;
+  border: 1px solid rgb(0, 0, 0, 0.2);
+}
+
+.navigation_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
