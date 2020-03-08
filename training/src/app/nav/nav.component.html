@@ -1,10 +1,8 @@
 <nav class="navigation">
   <ul class="navigation_list">
     <li *ngFor="let navEl of navList"
+        [routerLink]="navEl"
         class="navigation_item"
-        [routerLink]="'./' + navEl"
-        flexAlignContent="body of London"
-        [elementClass]="'navigation_item'">{{navEl}}</li>
+        flexAlignContent="body of London">{{navEl}}</li>
   </ul>
 </nav>
-<router-outlet></router-outlet>

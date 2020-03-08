@@ -5,10 +5,9 @@ import {AfterViewInit, Directive, ElementRef, HostListener, Input, OnInit} from 
 })
 export class FlexAlignContent implements AfterViewInit, OnInit {
   @Input() public flexAlignContent: string;
-  @Input() public elementClass;
 
   @HostListener('mouseover') onMouseover() {
-    this.currentElement.backgroundColor = 'orange';
+    this.currentElement.backgroundColor = '#beebe9';
   }
 
   @HostListener('mouseout') onMouseout() {
