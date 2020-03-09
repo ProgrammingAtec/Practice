@@ -10,7 +10,8 @@ import { WeatherComponent } from './weather/weather.component';
 import { ResumeComponent } from './resume/resume.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import {AppRoutingModule} from "./app-rouring.module";
+import { AppRoutingModule } from './app-rouring.module';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {AppRoutingModule} from "./app-rouring.module";
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]
