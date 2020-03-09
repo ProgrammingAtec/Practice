@@ -1,7 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {MaiComponent} from "./main/mai.component";
-import {GoalsComponent} from "./goals/goals.component";
+import {WeatherComponent} from "./weather/weather.component";
 import {ResumeComponent} from "./resume/resume.component";
 import {ContactsComponent} from "./contacts/contacts.component";
 import {SkillsComponent} from "./skills/skills.component";
@@ -13,7 +13,7 @@ const router: Routes = [
   },
   {
     path: 'goals',
-    component: GoalsComponent
+    component: WeatherComponent
   },
   {
     path: 'resume',
