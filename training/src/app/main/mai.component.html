@@ -1,1 +1,33 @@
-<img src="https://i.ytimg.com/vi/bF6r_JPYUkA/maxresdefault.jpg" alt="image of rabbit">
+<h4 class="collections">collections: {{ collectionsCounter }}</h4>
+<section class="main">
+    <div class="list">
+        <ul class="column"
+            cdkDropList
+            (cdkDropListDropped)="ondrop($event)">
+            <li *ngFor="let item of columnItems"
+                cdkDrag
+                flexAlignContent
+                class="column__item">{{ item }}
+            </li>
+        </ul>
+        <div class="add-new-collection"
+            >Add collection</div>
+    </div>
+
+    <form [formGroup]="editor">
+        <div class="header">
+            <div class="inputs">
+                <label>
+                    Object
+                    <input class="object" formControlName="objectName"/>
+                </label>
+                <label>
+                    Description
+                    <input class="description" formControlName="description"/>
+                </label>
+                
+            </div>
+            <input type="file"/> 
+        </div>
+    </form>
+</section>`

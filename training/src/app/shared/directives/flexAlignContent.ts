@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, ElementRef, HostListener, Input, OnInit} from "@angular/core";
+import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnInit } from "@angular/core";
 
 @Directive({
   selector: '[flexAlignContent]'
