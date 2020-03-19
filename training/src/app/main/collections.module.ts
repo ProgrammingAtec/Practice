@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
-import { MaiComponent } from './mai.component';
+import { CollectionsComponent } from './collections.component';
 import { CustomDataComponent } from './custom-data/custom-data.component';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DragDropModule }  from '@angular/cdk/drag-drop'
 
 @NgModule({
     declarations: [
-        MaiComponent,
+        CollectionsComponent,
         CustomDataComponent
     ],
     imports: [
         CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        DragDropModule,
+        FormsModule
     ],
     exports: [
-        MaiComponent,
+        CollectionsComponent,
         CustomDataComponent
     ],
     providers: [],

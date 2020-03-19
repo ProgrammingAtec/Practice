@@ -1,3 +1,15 @@
-p {
-    color: red;
+:host {
+    margin-top: 1rem;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list__item {
+    &:not(:last-child) {
+        margin-right: 0.5rem;
+    }
 }

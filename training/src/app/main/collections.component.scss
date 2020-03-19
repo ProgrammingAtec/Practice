@@ -1,10 +1,3 @@
-.main {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-
 .collections {
     max-width: 1280px;
     margin: 0 auto;
@@ -12,8 +5,19 @@
     padding: 1rem 0 0.5rem 0;
 }
 
+.main {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list {
+    width: 15%;
+    min-width: 10rem;
+}
+
 .column {
-    min-width: 200px;
     list-style: none;
     border: 1px solid rgb(0, 0, 0, 0.2);
 }
@@ -40,10 +44,15 @@
 
 // FORM
 
+form {
+    border: 1px solid orange;
+    max-width: 80%;
+    padding: 1rem;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
 
     .inputs {
         display: flex;
@@ -51,16 +60,27 @@
         align-items: space-between;
 
         label {
-            display: flex;
-            justify-content: space-between;
+            padding-bottom: 0.5rem;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
 
-            &:not(:last-child) {
-                margin-bottom: 1rem;
-            }
+        input, textarea {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
 
-            input {
-                margin-left: 1rem;
+        textarea {
+            resize: none;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
             }
+            
         }
     }
 }

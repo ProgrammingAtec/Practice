@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { FormControl, FormGroup, Validators } from '@Angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-mai',
-  templateUrl: './mai.component.html',
-  styleUrls: ['./mai.component.scss']
+  selector: 'app-collections',
+  templateUrl: './collections.component.html',
+  styleUrls: ['./collections.component.scss']
 })
-export class MaiComponent implements OnInit {
+export class CollectionsComponent implements OnInit {
   public columnItems: string[] = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
   public collectionsCounter: number = 0;
   public editor: FormGroup;

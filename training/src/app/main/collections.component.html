@@ -17,15 +17,15 @@
     <form [formGroup]="editor">
         <div class="header">
             <div class="inputs">
-                <label>
-                    Object
-                    <input class="object" formControlName="objectName"/>
-                </label>
-                <label>
-                    Description
-                    <input class="description" formControlName="description"/>
-                </label>
-                
+                <label>Object</label>
+                <input class="object" formControlName="objectName" maxlength="60"/>
+                <label>Description</label>
+                <textarea class="description"
+                          formControlName="description"
+                          rows="5"
+                          maxlength="1000"></textarea>
+
+                <app-custom-data></app-custom-data>
             </div>
             <input type="file"/> 
         </div>

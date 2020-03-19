@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./custom-data.component.scss']
 })
 export class CustomDataComponent {
-
+    public customData: any[] = [1,2,3,4, 'hello', 1,2,3,4, 'hello', 1,2,3,4, 'hello', 1,2,3,4, 'hello', 1,2,3,4, 'hello', 1,2,3,4, 'hello',
+    1,2,3,4, 'hello', 1,2,3,4, 'hello', 1,2,3,4, 'hello', 1,2,3,4, 'hello'];
 }
