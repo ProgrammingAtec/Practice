@@ -26,4 +26,8 @@ export class CollectionsComponent implements OnInit {
     moveItemInArray(this.columnItems, event.previousIndex, event.currentIndex);
   }
 
+  public readUrl(event) {
+    console.log(event);
+  }
+
 }

@@ -10,8 +10,7 @@
                 class="column__item">{{ item }}
             </li>
         </ul>
-        <div class="add-new-collection"
-            >Add collection</div>
+        <div class="add-new-collection">Add collection</div>
     </div>
 
     <form [formGroup]="editor">
@@ -23,11 +22,10 @@
                 <textarea class="description"
                           formControlName="description"
                           rows="5"
-                          maxlength="1000"></textarea>
-
-                <app-custom-data></app-custom-data>
+                          maxlength="1000">
+                </textarea>
             </div>
-            <input type="file"/> 
+            <input type="file" accept="image/gif, image/jpeg, image/png" (change)="readUrl($event)"/> 
         </div>
     </form>
 </section>`
