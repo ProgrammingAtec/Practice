@@ -1,111 +1,153 @@
 .collections {
-    max-width: 1280px;
-    margin: 0 auto;
-    color: rgb(0, 0, 0, 0.6);
-    padding: 1rem 0 0.5rem 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  color: rgb(0, 0, 0, 0.6);
+  padding: 1rem 0 0.5rem 0;
 }
 
 .main {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
+// ------------LIST------------
+
 .list {
-    width: 15%;
-    min-width: 10rem;
+  width: 15%;
+  min-width: 10rem;
 }
 
 .column {
-    list-style: none;
-    border: 1px solid rgb(0, 0, 0, 0.2);
+  list-style: none;
+  border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 .column__item {
-    display: flex;
-    justify-content: flex-start;
-    padding: 1rem;
-    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.2);
 
-    &:last-child {
-        border-bottom: none;
-    }
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .add-new-collection {
-    max-width: 200px;
-    border: 1px dashed rgb(0, 0, 0, 0.2);
-    display: flex; 
-    justify-content: flex-start;
-    padding: 1rem;
-    margin-top: 0.5rem;
+  max-width: 200px;
+  border: 1px dashed rgb(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem;
+  margin-top: 0.5rem;
 }
 
-// FORM
+// ------------FORM------------
 
 form {
-    border: 1px solid orange;
-    width: 80%;
-    padding: 1rem;
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  width: 80%;
+  padding: 1rem;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    .inputs {
-        display: flex;
-        flex-direction: column;
-        align-items: space-between;
-        margin-right: 3rem;
-        width: 100%;
-
-        label {
-            padding-bottom: 0.5rem;
-            color: rgba(0, 0, 0, 0.6);
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        input, textarea {
-            font-family: 'Raleway', sans-serif;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        textarea {
-            resize: none;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
-            
-        }
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-// CDK
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 3rem;
+  width: 100%;
+
+  label {
+    padding-bottom: 0.5rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  input {
+    margin-bottom: 1rem;
+  }
+
+  input, textarea {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+  }
+
+  textarea {
+    resize: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.upload {
+  position: relative;
+  color: rgb(255, 255, 255, 0.7);
+
+  .upload__preview {
+    max-height: 216px;
+    max-width: 300px;
+    vertical-align: top;
+  }
+
+  .upload__label {
+    background-color: rgb(0, 0, 0, 0.8);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 100%;
+    transition: top  0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+  .upload__input {
+    display: none;
+  }
+
+  &:hover {
+    .upload__label {
+      top: 50%;
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+// ------------CDK------------
 
 .cdk-drag-animating {
-    transition-duration: 0.1s;
+  transition-duration: 0.1s;
 }
 
 .cdk-drag-preview {
-    box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
 }
 
 .cdk-drag-placeholder {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .cdk-drop-list-dragging {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .column.cdk-drop-list-dragging .column__item {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
