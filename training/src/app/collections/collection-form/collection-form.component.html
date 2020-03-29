@@ -1,0 +1,25 @@
+<form [formGroup]="editor" @routeAnimation>
+  <div class="header">
+    <div class="inputs">
+      <label>Object</label>
+      <input class="object" formControlName="objectName" maxlength="60"/>
+      <label>Description</label>
+      <textarea class="description"
+                formControlName="description"
+                rows="5"
+                maxlength="1000">
+      </textarea>
+    </div>
+
+    <div class="upload">
+      <img class="upload__preview" [src]="url">
+      <label class="upload__label">
+        Upload
+        <input class="upload__input"
+               type="file"
+               accept="image/gif, image/jpeg, image/png"
+               (change)="readUrl($event)"/>
+      </label>
+    </div>
+  </div>
+</form>

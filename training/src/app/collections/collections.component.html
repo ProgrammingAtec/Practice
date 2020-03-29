@@ -1,0 +1,17 @@
+<h4 class="collections">collections: {{ collectionsCounter }}</h4>
+<section class="main">
+  <div class="list">
+    <ul class="column"
+        cdkDropList
+        (cdkDropListDropped)="ondrop($event)">
+      <li *ngFor="let item of columnItems"
+          [routerLink]="['/main', item.id]"
+          cdkDrag
+          flexAlignContent
+          class="column__item">{{ item.target }}
+      </li>
+    </ul>
+    <div class="add-new-collection">Add collection</div>
+  </div>
+  <router-outlet class="router"></router-outlet>
+</section>
