@@ -1,22 +1,24 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnInit } from "@angular/core";
+import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[flexAlignContent]'
+  selector: '[appFlexAlignContent]'
 })
-export class FlexAlignContent implements AfterViewInit, OnInit {
+export class FlexAlignContentDirective implements AfterViewInit, OnInit {
+
+  public constructor(private host: ElementRef) {
+  }
+
   @Input() public flexAlignContent: string;
+
+  private currentElement: CSSStyleDeclaration;
 
   @HostListener('mouseover') onMouseover() {
     this.currentElement.backgroundColor = '#beebe9';
+    this.currentElement.cursor = 'pointer';
   }
 
   @HostListener('mouseout') onMouseout() {
     this.currentElement.backgroundColor = '#fff';
-  }
-
-  private currentElement: CSSStyleDeclaration;
-
-  public constructor(private host: ElementRef) {
   }
 
   public ngOnInit() {

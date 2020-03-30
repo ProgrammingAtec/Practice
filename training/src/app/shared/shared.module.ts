@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
-import {FlexAlignContent} from "./directives/flexAlignContent";
+import { FlexAlignContentDirective } from './directives/flex-align-content.directive';
+import { AdjustableChartComponent } from './components/adjustable-chart/adjustable-chart.component';
 
 @NgModule({
-  declarations: [FlexAlignContent],
-  exports: [FlexAlignContent]
+  declarations: [
+    FlexAlignContentDirective,
+    AdjustableChartComponent
+  ],
+  exports: [
+    FlexAlignContentDirective,
+    AdjustableChartComponent
+  ]
 })
 export class SharedModule {}

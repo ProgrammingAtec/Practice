@@ -6,6 +6,7 @@
         (cdkDropListDropped)="ondrop($event)">
       <li *ngFor="let item of columnItems"
           [routerLink]="['/main', item.id]"
+          routerLinkActive="active"
           cdkDrag
           flexAlignContent
           class="column__item">{{ item.target }}

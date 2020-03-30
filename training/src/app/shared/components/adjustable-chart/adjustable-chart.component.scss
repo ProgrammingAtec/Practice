@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  width: 100%;
+}
+
+.chart,
+.chart-data {
+  width: 50%;
+}
+
+.chart-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.range {
+  width: 80%;
+}

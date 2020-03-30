@@ -22,4 +22,12 @@
       </label>
     </div>
   </div>
+  <div class="main">
+    <app-adjustable-chart></app-adjustable-chart>
+  </div>
+
+  <quill-editor [styles]="editorStyle"
+                [modules]="editorModules"
+                (onContentChanged)="contentChanged($event)">
+  </quill-editor>
 </form>

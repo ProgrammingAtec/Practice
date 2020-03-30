@@ -34,7 +34,10 @@ import { MainModule } from './collections/collections.module';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    SharedModule
+  ]
 })
 export class AppModule {
 }

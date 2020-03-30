@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .collections {
   max-width: 1280px;
   margin: 0 auto;
@@ -20,6 +22,7 @@
 }
 
 .column {
+  cursor: pointer;
   list-style: none;
   border: 1px solid rgb(0, 0, 0, 0.2);
 }
@@ -36,12 +39,17 @@
 }
 
 .add-new-collection {
+  cursor: pointer;
   max-width: 200px;
   border: 1px dashed rgb(0, 0, 0, 0.2);
   display: flex;
   justify-content: flex-start;
   padding: 1rem;
   margin-top: 0.5rem;
+}
+
+.active {
+  background-color: $bg-hover-highlight;
 }
 
 // ------------CDK------------
@@ -59,7 +67,7 @@
 }
 
 .cdk-drop-list-dragging {
-  pointer-events: none;
+  cursor: default;
 }
 
 .column.cdk-drop-list-dragging .column__item {

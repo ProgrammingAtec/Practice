@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CollectionFormComponent } from './collection-form/collection-form.component';
 import { CollectionsRoutingModule } from './collections-routing.module';
+import { QuillModule } from 'ngx-quill';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -13,7 +15,9 @@ import { CollectionsRoutingModule } from './collections-routing.module';
     ],
     imports: [
       CommonModule,
+      SharedModule,
       ReactiveFormsModule,
+      QuillModule.forRoot(),
       DragDropModule,
       FormsModule,
       CollectionsRoutingModule

@@ -15,11 +15,14 @@ export class CollectionsComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
+    if (localStorage.getItem('columnsOrder')) {
+      this.columnItems = JSON.parse(localStorage.getItem('columnsOrder'));
+    }
   }
 
   public ondrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.columnItems, event.previousIndex, event.currentIndex);
+    localStorage.setItem('columnsOrder', JSON.stringify(this.columnItems));
   }
-
 }
