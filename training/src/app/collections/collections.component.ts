@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Collections } from './mock-collections';
-import { Collection } from './collection.model';
+import { CollectionModel } from './collection.model';
 
 @Component({
   selector: 'app-collections',
@@ -9,7 +9,7 @@ import { Collection } from './collection.model';
   styleUrls: ['./collections.component.scss']
 })
 export class CollectionsComponent implements OnInit {
-  public columnItems: Collection[] = Collections;
+  public columnItems: CollectionModel[] = Collections;
   public collectionsCounter = 0;
 
   constructor() {

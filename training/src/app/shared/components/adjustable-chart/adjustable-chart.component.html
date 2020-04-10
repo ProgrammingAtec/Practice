@@ -1,6 +1,17 @@
-<div class="chart-data">
-  <input type="range" min="1" max="100" class="range" value="20">
-</div>
+<form class="chart-data" [formGroup]="form">
+  <div *ngFor="let singleData of chartData.data; index as index"
+       class="chart-data__wrapper"
+       formArrayName="ranges">
+    <label for="slider" class="chart-data__name">{{ singleData.name + ': ' + slider.value }}</label>
+    <input #slider
+           id="slider"
+           class="chart-data__value slider js"
+           [formControlName]="index"
+           type="range"
+           [min]="singleData.min" [max]="singleData.max">
+    <img src="" alt="">
+  </div>
+</form>
 <div class="chart">
   <canvas #canvas></canvas>
 </div>

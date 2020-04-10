@@ -1,11 +1,20 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Compiler,
+  Component, ComponentRef,
+  NgModule, OnDestroy,
+  OnInit, ViewChild, ViewContainerRef
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Collection } from '../collection.model';
+import { CollectionModel } from '../collection.model';
 import { vortex } from '../../router-animations/collections/animation';
 import { Chart, ChartConfiguration } from 'chart.js';
 import Quill from 'quill';
 import * as Parchment from 'parchment';
+import { ContentChange } from 'ngx-quill';
+import { QuillToolbarConfig } from 'ngx-quill/src/quill-editor.interfaces';
+import Instance = WebAssembly.Instance;
 
 @Component({
   selector: 'app-collection-form',
@@ -15,21 +24,26 @@ import * as Parchment from 'parchment';
     vortex
   ]
 })
-export class CollectionFormComponent implements OnInit, AfterViewInit {
-  public url: ArrayBuffer | string = 'https://via.placeholder.com/150x216';
-  public editor: FormGroup;
+export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('quillContent', {read: ViewContainerRef, static: false}) public quillContent: ViewContainerRef;
 
+  public avatar: ArrayBuffer | string = 'https://via.placeholder.com/150x216';
+  public editor: FormGroup;
+  public currentCollection: CollectionModel;
+  public editorTemplate;
   public editorStyle = {
     height: '200px'
   };
-
   public editorModules = {
     toolbar: [
-      ['bold', 'italic', 'link']
+      ['bold', 'italic', 'link', 'color']
     ]
   };
 
-  constructor(private readonly route: ActivatedRoute) {
+  private editorComponentRef;
+
+  constructor(private readonly route: ActivatedRoute,
+              private readonly compiler: Compiler) {
   }
 
   public ngOnInit() {
@@ -38,31 +52,49 @@ export class CollectionFormComponent implements OnInit, AfterViewInit {
       description: new FormControl('', Validators.required)
     });
 
-    this.route.data.subscribe((data: { collectionData: Collection }) => {
+    this.route.data.subscribe((data: { collectionData: CollectionModel }) => {
       this.editor.get('objectName').setValue(data.collectionData.target);
       this.editor.get('description').setValue(data.collectionData.description);
-      this.url = data.collectionData.avatar;
+      this.currentCollection = data.collectionData;
+      this.avatar = data.collectionData.avatar;
     });
   }
 
-  public ngAfterViewInit() {
+  public ngAfterViewInit(): void {
 
+  }
+
+  public ngOnDestroy(): void {
+    if (this.editorComponentRef) {
+      this.editorComponentRef.destroy();
+    }
   }
 
   public readUrl(event) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
-
       reader.readAsDataURL(event.target.files[0]);
-
       reader.onload = (progressEvent) => {
-        this.url = reader.result;
+        this.avatar = reader.result;
       };
     }
   }
 
-  public contentChanged(event) {
-    console.log(event);
+  public contentChanged(event: ContentChange) {
+    this.editorTemplate = event.html;
+  }
+
+  public createEditorContent(): void {
+    const tmpCmp = Component({template: this.editorTemplate})(class DynamicCmp {
+    });
+    const tmpModule = NgModule({declarations: [tmpCmp]})(class DynamicModule {
+    });
+
+    this.compiler.compileModuleAndAllComponentsAsync(tmpModule)
+      .then(factories => {
+        const editorComponentFactory = factories.componentFactories[0];
+        this.editorComponentRef = this.quillContent.createComponent(editorComponentFactory);
+      });
   }
 
   // private createCustomLinkBlot() {

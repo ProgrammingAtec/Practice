@@ -24,14 +24,14 @@
 .column {
   cursor: pointer;
   list-style: none;
-  border: 1px solid rgb(0, 0, 0, 0.2);
+  border: 1px solid $contour-grey;
 }
 
 .column__item {
   display: flex;
   justify-content: flex-start;
   padding: 1rem;
-  border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+  border-bottom: 1px solid $contour-grey;
 
   &:last-child {
     border-bottom: none;
@@ -41,7 +41,7 @@
 .add-new-collection {
   cursor: pointer;
   max-width: 200px;
-  border: 1px dashed rgb(0, 0, 0, 0.2);
+  border: 1px dashed $contour-grey;
   display: flex;
   justify-content: flex-start;
   padding: 1rem;
@@ -59,7 +59,7 @@
 }
 
 .cdk-drag-preview {
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px $contour-grey;
 }
 
 .cdk-drag-placeholder {
