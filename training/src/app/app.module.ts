@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-rouring.module';
 import { AgGridModule } from 'ag-grid-angular';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainModule } from './collections/collections.module';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MainModule } from './collections/collections.module';
     AgGridModule.withComponents([]),
     NoopAnimationsModule,
     MainModule,
+    // IonicModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule
   ],

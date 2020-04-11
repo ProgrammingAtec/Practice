@@ -30,6 +30,7 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
   public avatar: ArrayBuffer | string = 'https://via.placeholder.com/150x216';
   public editor: FormGroup;
   public currentCollection: CollectionModel;
+  public isEditing: boolean;
   public editorTemplate;
   public editorStyle = {
     height: '200px'
@@ -95,6 +96,10 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
         const editorComponentFactory = factories.componentFactories[0];
         this.editorComponentRef = this.quillContent.createComponent(editorComponentFactory);
       });
+  }
+
+  public toggleEditing(): void {
+    this.isEditing = !this.isEditing;
   }
 
   // private createCustomLinkBlot() {

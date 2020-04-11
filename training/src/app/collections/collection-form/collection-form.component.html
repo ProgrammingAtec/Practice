@@ -32,19 +32,23 @@
   <div class="editor">
     <div class="editor-content">
 
-      <quill-editor *ngIf="1"
+      <quill-editor *ngIf="isEditing"
+                    class="quill"
                     [styles]="editorStyle"
                     [modules]="editorModules"
                     (onContentChanged)="contentChanged($event)">
       </quill-editor>
 
-      <ng-container #quillContent></ng-container>
+      <ng-container #quillContent class="quill-content"></ng-container>
 
     </div>
 
     <div class="buttons">
-      <button type="button" class="button">save</button>
-      <button type="button" class="button" (click)="createEditorContent()">edit</button>
+      <ion-icon name="save"></ion-icon>
+      <button *ngIf="isEditing" type="button" class="button" (click)="createEditorContent(); toggleEditing()">save
+      </button>
+      <button *ngIf="!isEditing" type="button" class="button" (click)="toggleEditing()">edit
+      </button>
     </div>buttons
   </div>
 </form>
