@@ -4,8 +4,7 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { CollectionModel } from './collection.model';
 import { Collections } from './mock-collections';
 
-
-Injectable();
+@Injectable()
 export class CollectionResolver implements Resolve<Observable<CollectionModel>> {
   private allCollections = Collections;
 

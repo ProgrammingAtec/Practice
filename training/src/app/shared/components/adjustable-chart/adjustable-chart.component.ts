@@ -22,7 +22,7 @@ const INPUT_DEBOUNCE_TIME_MS = 250;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdjustableChartComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('canvas', {static: false}) private canvasRef: ElementRef;
+  @ViewChild('canvas') private canvasRef: ElementRef;
 
   public collection: CollectionModel;
   public chartData: CollectionChartModel;

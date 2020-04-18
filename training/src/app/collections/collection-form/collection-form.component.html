@@ -44,7 +44,6 @@
     </div>
 
     <div class="buttons">
-      <ion-icon name="save"></ion-icon>
       <button *ngIf="isEditing" type="button" class="button" (click)="createEditorContent(); toggleEditing()">save
       </button>
       <button *ngIf="!isEditing" type="button" class="button" (click)="toggleEditing()">edit

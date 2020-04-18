@@ -1,7 +1,6 @@
 import {
-  AfterViewInit,
-  Compiler,
-  Component, ComponentRef,
+  AfterViewInit, Compiler,
+  Component, ComponentFactoryResolver,
   NgModule, OnDestroy,
   OnInit, ViewChild, ViewContainerRef
 } from '@angular/core';
@@ -14,18 +13,28 @@ import Quill from 'quill';
 import * as Parchment from 'parchment';
 import { ContentChange } from 'ngx-quill';
 import { QuillToolbarConfig } from 'ngx-quill/src/quill-editor.interfaces';
-import Instance = WebAssembly.Instance;
+import { JitCompilerFactory } from '@angular/platform-browser-dynamic';
+//
+// export function createJitCompiler(): Compiler {
+//   return new JitCompilerFactory().createCompiler([{useJit: true}]);
+// }
 
 @Component({
   selector: 'app-collection-form',
   templateUrl: './collection-form.component.html',
   styleUrls: ['./collection-form.component.scss'],
+  // providers: [
+  //   {
+  //     provide: Compiler,
+  //     useFactory: createJitCompiler
+  //   }
+  // ],
   animations: [
     vortex
   ]
 })
 export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('quillContent', {read: ViewContainerRef, static: false}) public quillContent: ViewContainerRef;
+  @ViewChild('quillContent', { read: ViewContainerRef }) public quillContent: ViewContainerRef;
 
   public avatar: ArrayBuffer | string = 'https://via.placeholder.com/150x216';
   public editor: FormGroup;
@@ -44,7 +53,8 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
   private editorComponentRef;
 
   constructor(private readonly route: ActivatedRoute,
-              private readonly compiler: Compiler) {
+              private readonly jitCompiler: Compiler,
+              private readonly cfr: ComponentFactoryResolver) {
   }
 
   public ngOnInit() {
@@ -59,6 +69,8 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
       this.currentCollection = data.collectionData;
       this.avatar = data.collectionData.avatar;
     });
+
+    console.log(this.jitCompiler);
   }
 
   public ngAfterViewInit(): void {
@@ -85,17 +97,15 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
     this.editorTemplate = event.html;
   }
 
-  public createEditorContent(): void {
-    const tmpCmp = Component({template: this.editorTemplate})(class DynamicCmp {
-    });
-    const tmpModule = NgModule({declarations: [tmpCmp]})(class DynamicModule {
-    });
+  public async createEditorContent() {
+    this.quillContent.clear();
 
-    this.compiler.compileModuleAndAllComponentsAsync(tmpModule)
-      .then(factories => {
-        const editorComponentFactory = factories.componentFactories[0];
-        this.editorComponentRef = this.quillContent.createComponent(editorComponentFactory);
-      });
+    const newTemplate = this.editorTemplate;
+    const tmpCmp = Component({template: newTemplate})(class DynamicComponent {});
+    const cmpModule = NgModule({declarations: [tmpCmp]})(class DynamicModule {});
+
+    this.jitCompiler.compileModuleAndAllComponentsAsync(cmpModule)
+
   }
 
   public toggleEditing(): void {

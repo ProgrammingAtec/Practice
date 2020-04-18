@@ -1,19 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Compiler, COMPILER_OPTIONS, CompilerFactory, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AppRoutingModule } from './app-rouring.module';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+import { MainModule } from './collections/collections.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { SharedModule } from './shared/shared.module';
-import { WeatherComponent } from './weather/weather.component';
-import { ResumeComponent } from './resume/resume.component';
 import { SkillsComponent } from './skills/skills.component';
+import { ResumeComponent } from './resume/resume.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { AppRoutingModule } from './app-rouring.module';
-import { AgGridModule } from 'ag-grid-angular';
-import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainModule } from './collections/collections.module';
-import { IonicModule } from '@ionic/angular';
+import { WeatherComponent } from './weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -28,15 +25,13 @@ import { IonicModule } from '@ionic/angular';
     BrowserModule,
     SharedModule,
     HttpClientModule,
-    AgGridModule.withComponents([]),
     NoopAnimationsModule,
     MainModule,
-    // IonicModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent],
+  providers: [],
   exports: [
     SharedModule
   ]

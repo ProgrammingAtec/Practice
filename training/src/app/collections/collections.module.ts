@@ -7,7 +7,6 @@ import { CollectionFormComponent } from './collection-form/collection-form.compo
 import { CollectionsRoutingModule } from './collections-routing.module';
 import { QuillModule } from 'ngx-quill';
 import { SharedModule } from '../shared/shared.module';
-import { IonicModule } from '@ionic/angular';
 
 @NgModule({
     declarations: [
@@ -19,7 +18,6 @@ import { IonicModule } from '@ionic/angular';
       SharedModule,
       ReactiveFormsModule,
       QuillModule.forRoot(),
-      IonicModule.forRoot(),
       DragDropModule,
       FormsModule,
       CollectionsRoutingModule
