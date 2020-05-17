@@ -2,7 +2,7 @@
   <div class="header">
     <div class="inputs">
       <label for="target">Object</label>
-      <input id="target" class="object" formControlName="objectName" maxlength="60">
+      <input id="target" class="object" formControlName="name" maxlength="60">
       <label for="description">Brief description</label>
       <textarea id="description"
                 class="description"
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <div class="main">
+  <div class="chart">
     <app-adjustable-chart *ngIf="currentCollection?.chart" [currentCollectionChart]="currentCollection.chart">
     </app-adjustable-chart>
   </div>

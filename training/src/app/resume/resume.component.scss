@@ -1,0 +1,13 @@
+//-----------------DIAGRAM-----------------
+
+.diagram {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+.diagram__item {
+  width: 15px;
+  border: 1px solid black;
+}

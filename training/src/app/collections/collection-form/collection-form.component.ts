@@ -14,21 +14,11 @@ import * as Parchment from 'parchment';
 import { ContentChange } from 'ngx-quill';
 import { QuillToolbarConfig } from 'ngx-quill/src/quill-editor.interfaces';
 import { JitCompilerFactory } from '@angular/platform-browser-dynamic';
-//
-// export function createJitCompiler(): Compiler {
-//   return new JitCompilerFactory().createCompiler([{useJit: true}]);
-// }
 
 @Component({
   selector: 'app-collection-form',
   templateUrl: './collection-form.component.html',
   styleUrls: ['./collection-form.component.scss'],
-  // providers: [
-  //   {
-  //     provide: Compiler,
-  //     useFactory: createJitCompiler
-  //   }
-  // ],
   animations: [
     vortex
   ]
@@ -50,8 +40,6 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
     ]
   };
 
-  private editorComponentRef;
-
   constructor(private readonly route: ActivatedRoute,
               private readonly jitCompiler: Compiler,
               private readonly cfr: ComponentFactoryResolver) {
@@ -59,7 +47,7 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
 
   public ngOnInit() {
     this.editor = new FormGroup({
-      objectName: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)
     });
 
@@ -69,8 +57,6 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
       this.currentCollection = data.collectionData;
       this.avatar = data.collectionData.avatar;
     });
-
-    console.log(this.jitCompiler);
   }
 
   public ngAfterViewInit(): void {
@@ -78,9 +64,6 @@ export class CollectionFormComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   public ngOnDestroy(): void {
-    if (this.editorComponentRef) {
-      this.editorComponentRef.destroy();
-    }
   }
 
   public readUrl(event) {

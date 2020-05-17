@@ -1,1 +1,28 @@
-<p>resume works!</p>
+<form [formGroup]="form" class="form" (submit)="submitForm()">
+  <div class="data-to-fill">
+    <label for="divs">Number of divs</label>
+    <input id="divs" type="text" value="0" formControlName="divsNumber">
+
+    <label for="divs-color">Divs colors</label>
+    <input id="divs-color" type="text" value="aqua" formControlName="divsColor">
+
+    <label for="sort-types"></label>
+    <select name="sortTypes" id="sort-types" formControlName="selectSort" (change)="selectChannged($event)">
+      <option value="selectionSort">Selections sort</option>
+      <option value="bubbleSort">Bubble sort</option>
+    </select>
+  </div>
+
+  <button type="submit">save</button>
+</form>
+
+<div class="try-sort">
+  <button type="button" (click)="trySort()">Try sort</button>
+</div>
+
+<div class="diagram">
+  <div *ngFor="let item of divs"
+       class="diagram__item"
+       [style.height.px]="item"
+       [style.background-color]="color"></div>
+</div>
