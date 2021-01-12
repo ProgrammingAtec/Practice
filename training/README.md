@@ -1,6 +1,6 @@
 # Training
 
-Frontend on Angular + some third-party libraries. This repository was generated to reinforce knowledg
+Frontend on Angular + some third-party libraries. This repository was generated to reinforce knowledge,learn algorithms and dynamic components in angular + migration to Ivy engine (from JIT to AOT). Not finished
 
 ## Development server
 
